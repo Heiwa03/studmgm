@@ -17,6 +17,7 @@ namespace UniversityManagement
         public string Name { get; set; }
         public string Abbreviation { get; set; }
         public List<Student> Students { get; set; }
+        public List<Student> GraduatedStudents { get; set; }
         public StudyField StudyField { get; set; }
 
         public Faculty(string name, string abbreviation, StudyField studyField)
