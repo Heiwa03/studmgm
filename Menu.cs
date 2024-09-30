@@ -18,10 +18,12 @@ namespace UniversityManagement
             while (true)
             {
                 Console.WriteLine("Menu:");
+                Console.WriteLine("General operations:");
                 Console.WriteLine("1. Create a new faculty");
                 Console.WriteLine("2. Search for a faculty by student email");
                 Console.WriteLine("3. Display all faculties");
                 Console.WriteLine("4. Display faculties by study field");
+                Console.WriteLine("\nFaculty operations:");
                 Console.WriteLine("5. Create and assign a student to a faculty");
                 Console.WriteLine("6. Graduate a student from a faculty");
                 Console.WriteLine("7. Display all enrolled students");
