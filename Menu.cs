@@ -1,17 +1,16 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
 
 namespace UniversityManagement
 {
     public class Menu
     {
         private List<Faculty> faculties = new List<Faculty>();
-        private const string SaveFilePath = "faculties.json";
+        private SaveManager saveManager = new SaveManager();
+
         public Menu()
         {
-            LoadState();
+            faculties = saveManager.LoadState();
         }
         public void DisplayMenu()
         {
@@ -63,7 +62,7 @@ namespace UniversityManagement
                         CheckIfStudentBelongsToFaculty();
                         break;
                     case "10":
-                        SaveState();
+                        saveManager.SaveState(faculties);
                         return;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
@@ -248,28 +247,6 @@ namespace UniversityManagement
             }
 
             Console.WriteLine("Student not found in any faculty.");
-        }
-
-        private void SaveState()
-        {
-            var options = new JsonSerializerOptions { WriteIndented = true };
-            string jsonString = JsonSerializer.Serialize(faculties, options);
-            File.WriteAllText(SaveFilePath, jsonString);
-            Console.WriteLine("State saved successfully.");
-        }
-
-        private void LoadState()
-        {
-            if (File.Exists(SaveFilePath))
-            {
-                string jsonString = File.ReadAllText(SaveFilePath);
-                faculties = JsonSerializer.Deserialize<List<Faculty>>(jsonString);
-                Console.WriteLine("State loaded successfully.");
-            }
-            else
-            {
-                Console.WriteLine("No saved state found.");
-            }
         }
     }
 }

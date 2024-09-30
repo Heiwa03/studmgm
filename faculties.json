@@ -21,5 +21,20 @@
       }
     ],
     "StudyField": 0
+  },
+  {
+    "Name": "Calculatoare Informatica si Microelectronica",
+    "Abbreviation": "FCIM",
+    "Students": [
+      {
+        "FirstName": "Dan",
+        "LastName": "Alecu",
+        "Email": "daniel@gmail.com",
+        "EnrollmentDate": "2024-09-30T08:52:43.5707552+03:00",
+        "DateOfBirth": "2002-01-01T00:00:00"
+      }
+    ],
+    "GraduatedStudents": [],
+    "StudyField": 1
   }
 ]
