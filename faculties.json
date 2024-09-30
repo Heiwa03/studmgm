@@ -1,0 +1,25 @@
+[
+  {
+    "Name": "asdf",
+    "Abbreviation": "cim",
+    "Students": [
+      {
+        "FirstName": "asdf",
+        "LastName": "asdf",
+        "Email": "asdf@asdf.com",
+        "EnrollmentDate": "2024-09-30T08:37:02.1969714+03:00",
+        "DateOfBirth": "2000-03-13T00:00:00"
+      }
+    ],
+    "GraduatedStudents": [
+      {
+        "FirstName": "eori",
+        "LastName": "wfeob",
+        "Email": "wef@gmail.com",
+        "EnrollmentDate": "2024-09-30T08:37:18.6390975+03:00",
+        "DateOfBirth": "1999-01-01T00:00:00"
+      }
+    ],
+    "StudyField": 0
+  }
+]
