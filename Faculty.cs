@@ -34,7 +34,7 @@ namespace UniversityManagement
             Students.Add(student);
         }
 
-            public void GraduateStudent(Student student)
+        public void GraduateStudent(Student student)
         {
             if (Students.Remove(student))
             {

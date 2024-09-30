@@ -179,13 +179,22 @@ namespace UniversityManagement
             // Search for the student in all faculties
             foreach (var faculty in faculties)
             {
+                Student studentToGraduate = null;
                 foreach (var student in faculty.Students)
                 {
                     if (student.Email.Equals(email, StringComparison.OrdinalIgnoreCase))
                     {
-                        // Graduate the student
-                        faculty.GraduateStudent(student);
+                        studentToGraduate = student;
+                        break;
                     }
+                }
+
+                if (studentToGraduate != null)
+                {
+                    // Graduate the student
+                    faculty.GraduateStudent(studentToGraduate);
+                    Console.WriteLine($"Student {studentToGraduate.FirstName} {studentToGraduate.LastName} has been graduated from {faculty.Name}.");
+                    return;
                 }
             }
 
