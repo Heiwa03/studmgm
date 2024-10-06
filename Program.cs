@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace UniversityManagement
+﻿namespace UniversityManagement
 {
     class Program
     {

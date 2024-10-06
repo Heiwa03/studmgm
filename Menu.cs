@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-
 namespace UniversityManagement
 {
     public class Menu
     {
         private List<Faculty> faculties = new List<Faculty>();
-        private SaveManager saveManager = new SaveManager();
         private Logger logger = new Logger("application.log");
+        private SaveManager saveManager;
+        private InputValidator inputValidator;
 
         public Menu()
         {
+            saveManager = new SaveManager(logger); // Pass the logger to SaveManager
+            inputValidator = new InputValidator(logger); // Pass the logger to InputValidator
             faculties = saveManager.LoadState();
             logger.LogInfo("Application started and state loaded.");
         }
@@ -76,24 +76,16 @@ namespace UniversityManagement
 
         private void CreateFaculty()
         {
-            string name = GetValidatedInput("Enter faculty name: ", "Faculty name cannot be empty. Please enter a valid name.");
-            string abbreviation = GetValidatedInput("Enter faculty abbreviation: ", "Faculty abbreviation cannot be empty. Please enter a valid abbreviation.");
+            string name = inputValidator.GetValidatedInput("Enter faculty name: ", "Faculty name cannot be empty. Please enter a valid name.");
+            string abbreviation = inputValidator.GetValidatedInput("Enter faculty abbreviation: ", "Faculty abbreviation cannot be empty. Please enter a valid abbreviation.");
 
             Console.WriteLine("Select study field:");
             foreach (var field in Enum.GetValues(typeof(StudyField)))
             {
                 Console.WriteLine($"{(int)field}. {field}");
             }
-            Console.Write("Enter the number corresponding to the study field: ");
-            string? input = Console.ReadLine();
-            int studyFieldChoice;
 
-            while (!int.TryParse(input, out studyFieldChoice))
-            {
-                Console.Write("Invalid input. Please enter a valid number corresponding to the study field: ");
-                input = Console.ReadLine();
-            }
-
+            int studyFieldChoice = inputValidator.GetValidatedIntInput("Enter the number corresponding to the study field: ", "Invalid input. Please enter a valid number corresponding to the study field.");
             StudyField studyField = (StudyField)studyFieldChoice;
 
             Faculty newFaculty = new Faculty(name, abbreviation, studyField);
@@ -104,7 +96,7 @@ namespace UniversityManagement
 
         private void SearchFacultyByEmail()
         {
-            string email = GetValidatedInput("Enter student email: ", "Email cannot be empty. Please enter a valid email.");
+            string email = inputValidator.GetValidatedInput("Enter student email: ", "Email cannot be empty. Please enter a valid email.");
 
             foreach (var faculty in faculties)
             {
@@ -140,8 +132,8 @@ namespace UniversityManagement
             {
                 Console.WriteLine($"{(int)field}. {field}");
             }
-            Console.Write("Enter the number corresponding to the study field: ");
-            int studyFieldChoice = int.Parse(Console.ReadLine());
+
+            int studyFieldChoice = inputValidator.GetValidatedIntInput("Enter the number corresponding to the study field: ", "Invalid input. Please enter a valid number corresponding to the study field.");
             StudyField studyField = (StudyField)studyFieldChoice;
 
             Console.WriteLine($"Faculties in {studyField}:");
@@ -158,20 +150,11 @@ namespace UniversityManagement
         private void CreateAndAssignStudentToFaculty()
         {
             // Prompt for student details
-            string firstName = GetValidatedInput("Enter student's first name: ", "First name cannot be empty. Please enter a valid first name.");
-            string lastName = GetValidatedInput("Enter student's last name: ", "Last name cannot be empty. Please enter a valid last name.");
-            string email = GetValidatedInput("Enter student's email: ", "Email cannot be empty. Please enter a valid email.");
+            string firstName = inputValidator.GetValidatedInput("Enter student's first name: ", "First name cannot be empty. Please enter a valid first name.");
+            string lastName = inputValidator.GetValidatedInput("Enter student's last name: ", "Last name cannot be empty. Please enter a valid last name.");
+            string email = inputValidator.GetValidatedInput("Enter student's email: ", "Email cannot be empty. Please enter a valid email.");
 
-            Console.Write("Enter student's date of birth (yyyy-mm-dd): ");
-            string dobInput = Console.ReadLine();
-            DateTime dateOfBirth;
-
-            while (!DateTime.TryParse(dobInput, out dateOfBirth))
-            {
-                Console.Write("Invalid date format. Please enter student's date of birth (yyyy-mm-dd): ");
-                logger.LogWarning($"Invalid date format entered: {dobInput}");
-                dobInput = Console.ReadLine();
-            }
+            DateTime dateOfBirth = inputValidator.GetValidatedDateInput("Enter student's date of birth (yyyy-mm-dd): ", "Invalid date format. Please enter a valid date.");
 
             DateTime enrollmentDate = DateTime.Now;
 
@@ -184,8 +167,8 @@ namespace UniversityManagement
             {
                 Console.WriteLine($"{i + 1}. {faculties[i].Name}");
             }
-            Console.Write("Enter the number corresponding to the faculty: ");
-            int facultyChoice = int.Parse(Console.ReadLine()) - 1;
+
+            int facultyChoice = inputValidator.GetValidatedIntInput("Enter the number corresponding to the faculty: ", "Invalid input. Please enter a valid number corresponding to the faculty.") - 1;
 
             if (facultyChoice >= 0 && facultyChoice < faculties.Count)
             {
@@ -204,12 +187,12 @@ namespace UniversityManagement
         private void GraduateStudentFromFaculty()
         {
             // Prompt for student email
-            string email = GetValidatedInput("Enter student's email: ", "Email cannot be empty. Please enter a valid email.");
+            string email = inputValidator.GetValidatedInput("Enter student's email: ", "Email cannot be empty. Please enter a valid email.");
 
             // Search for the student in all faculties
             foreach (var faculty in faculties)
             {
-                Student studentToGraduate = null;
+                Student? studentToGraduate = null;
                 foreach (var student in faculty.Students)
                 {
                     if (student.Email.Equals(email, StringComparison.OrdinalIgnoreCase))
@@ -256,7 +239,7 @@ namespace UniversityManagement
         private void CheckIfStudentBelongsToFaculty()
         {
             // Prompt for student email
-            string email = GetValidatedInput("Enter student's email: ", "Email cannot be empty. Please enter a valid email.");
+            string email = inputValidator.GetValidatedInput("Enter student's email: ", "Email cannot be empty. Please enter a valid email.");
 
             // Search for the student in all faculties
             foreach (var faculty in faculties)
@@ -274,23 +257,6 @@ namespace UniversityManagement
 
             Console.WriteLine("Student not found in any faculty.");
             logger.LogWarning($"Student not found with email: {email}");
-        }
-
-        private string GetValidatedInput(string prompt, string warningMessage)
-        {
-            string? input;
-            do
-            {
-                Console.Write(prompt);
-                input = Console.ReadLine();
-                if (string.IsNullOrWhiteSpace(input))
-                {
-                    Console.WriteLine(warningMessage);
-                    logger.LogWarning(warningMessage);
-                }
-            } while (string.IsNullOrWhiteSpace(input));
-
-            return input;
         }
     }
 }

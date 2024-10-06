@@ -1,5 +1,3 @@
-using System;
-
 namespace UniversityManagement
 {
     public class Student
