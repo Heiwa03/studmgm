@@ -19,7 +19,7 @@ namespace UniversityManagement
         {
             while (true)
             {
-                Console.WriteLine("Menu:");
+                Console.WriteLine("\nMenu:");
                 Console.WriteLine("1. Create a new faculty");
                 Console.WriteLine("2. Search for a faculty by student email");
                 Console.WriteLine("3. Display all faculties");
