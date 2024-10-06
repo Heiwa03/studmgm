@@ -152,5 +152,51 @@ namespace UniversityManagement
                 }
             }
         }
+
+        public void GraduateStudentByEmail(string email, List<Faculty> faculties)
+        {
+            foreach (var faculty in faculties)
+            {
+                var student = faculty.Students.Find(s => s.Email == email);
+                if (student != null)
+                {
+                    faculty.GraduateStudent(student);
+                    logger.LogInfo($"Student {student.FirstName} {student.LastName} graduated from faculty {faculty.Name}");
+                    return;
+                }
+            }
+
+            logger.LogWarning($"No student found with email: {email}");
+        }
+
+        public void GraduateStudentsFromFile(string filePath, List<Faculty> faculties)
+        {
+            try
+            {
+                using (var reader = new StreamReader(filePath))
+                {
+                    string? email;
+                    while ((email = reader.ReadLine()) != null)
+                    {
+                        email = email.Trim();
+                        if (!string.IsNullOrEmpty(email))
+                        {
+                            logger.LogInfo($"Processing graduation for student with email: {email}");
+                            GraduateStudentByEmail(email, faculties);
+                        }
+                        else
+                        {
+                            logger.LogWarning("Encountered empty or invalid email in file.");
+                        }
+                    }
+                }
+
+                logger.LogInfo($"Successfully processed graduation for students from file: {filePath}");
+            }
+            catch (Exception ex)
+            {
+                logger.LogError($"Error reading email file: {ex.Message}");
+            }
+        }
     }
 }

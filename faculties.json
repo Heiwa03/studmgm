@@ -2,7 +2,8 @@
   {
     "Name": "Mechanical Engineering",
     "Abbreviation": "ME",
-    "Students": [
+    "Students": [],
+    "GraduatedStudents": [
       {
         "FirstName": "Jane",
         "LastName": "Smith",
@@ -11,13 +12,13 @@
         "DateOfBirth": "1999-05-20T00:00:00"
       }
     ],
-    "GraduatedStudents": [],
     "StudyField": 0
   },
   {
     "Name": "Software Engineering",
     "Abbreviation": "SE",
-    "Students": [
+    "Students": [],
+    "GraduatedStudents": [
       {
         "FirstName": "John",
         "LastName": "Doe",
@@ -26,13 +27,13 @@
         "DateOfBirth": "2000-01-15T00:00:00"
       }
     ],
-    "GraduatedStudents": [],
     "StudyField": 1
   },
   {
     "Name": "Food Technology",
     "Abbreviation": "FT",
-    "Students": [
+    "Students": [],
+    "GraduatedStudents": [
       {
         "FirstName": "Alice",
         "LastName": "Johnson",
@@ -41,13 +42,13 @@
         "DateOfBirth": "2001-03-10T00:00:00"
       }
     ],
-    "GraduatedStudents": [],
     "StudyField": 2
   },
   {
     "Name": "Urbanism and Architecture",
     "Abbreviation": "UA",
-    "Students": [
+    "Students": [],
+    "GraduatedStudents": [
       {
         "FirstName": "Bob",
         "LastName": "Brown",
@@ -56,13 +57,13 @@
         "DateOfBirth": "2000-07-25T00:00:00"
       }
     ],
-    "GraduatedStudents": [],
     "StudyField": 3
   },
   {
     "Name": "Veterinary Medicine",
     "Abbreviation": "VM",
-    "Students": [
+    "Students": [],
+    "GraduatedStudents": [
       {
         "FirstName": "Carol",
         "LastName": "White",
@@ -71,7 +72,6 @@
         "DateOfBirth": "1998-11-30T00:00:00"
       }
     ],
-    "GraduatedStudents": [],
     "StudyField": 4
   }
 ]

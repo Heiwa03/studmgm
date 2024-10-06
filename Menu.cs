@@ -32,7 +32,8 @@ namespace UniversityManagement
                 Console.WriteLine("8. Display all graduates");
                 Console.WriteLine("9. Check if a student belongs to a faculty");
                 Console.WriteLine("10. Batch enroll students from CSV");
-                Console.WriteLine("11. Exit");
+                Console.WriteLine("11. Graduate students from email file");
+                Console.WriteLine("12. Exit");
                 Console.Write("Enter your choice: ");
                 string? choice = Console.ReadLine();
 
@@ -69,6 +70,9 @@ namespace UniversityManagement
                         BatchEnrollStudents();
                         break;
                     case "11":
+                        GraduateStudentsFromEmailFile();
+                        break;
+                    case "12":
                         saveManager.SaveState(faculties);
                         logger.LogInfo("Application state saved and exited.");
                         return;
@@ -234,6 +238,18 @@ namespace UniversityManagement
 
             Console.WriteLine("Student not found in any faculty.");
             logger.LogWarning($"Student not found with email: {email}");
+        }
+
+        private void GraduateStudentsFromEmailFile()
+        {
+            // Prompt for the file path
+            string filePath = inputValidator.GetValidatedInput("Enter the path to the email file: ", "File path cannot be empty. Please enter a valid file path.");
+
+            // Use the BatchEnrollment method to graduate students from the file
+            batchEnrollment.GraduateStudentsFromFile(filePath, faculties);
+
+            Console.WriteLine($"Successfully processed graduation for students from file: {filePath}");
+            logger.LogInfo($"Successfully processed graduation for students from file: {filePath}");
         }
 
         private void DisplayAllEnrolledStudents()
