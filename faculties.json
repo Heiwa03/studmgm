@@ -1,58 +1,5 @@
 [
   {
-    "Name": "asdf",
-    "Abbreviation": "cim",
-    "Students": [
-      {
-        "FirstName": "asdf",
-        "LastName": "asdf",
-        "Email": "asdf@asdf.com",
-        "EnrollmentDate": "2024-09-30T08:37:02.1969714+03:00",
-        "DateOfBirth": "2000-03-13T00:00:00"
-      }
-    ],
-    "GraduatedStudents": [
-      {
-        "FirstName": "eori",
-        "LastName": "wfeob",
-        "Email": "wef@gmail.com",
-        "EnrollmentDate": "2024-09-30T08:37:18.6390975+03:00",
-        "DateOfBirth": "1999-01-01T00:00:00"
-      }
-    ],
-    "StudyField": 0
-  },
-  {
-    "Name": "Calculatoare Informatica si Microelectronica",
-    "Abbreviation": "FCIM",
-    "Students": [
-      {
-        "FirstName": "Dan",
-        "LastName": "Alecu",
-        "Email": "daniel@gmail.com",
-        "EnrollmentDate": "2024-09-30T08:52:43.5707552+03:00",
-        "DateOfBirth": "2002-01-01T00:00:00"
-      }
-    ],
-    "GraduatedStudents": [],
-    "StudyField": 1
-  },
-  {
-    "Name": "testfact",
-    "Abbreviation": "ts",
-    "Students": [],
-    "GraduatedStudents": [
-      {
-        "FirstName": "john",
-        "LastName": "smith",
-        "Email": "john@gmail.com",
-        "EnrollmentDate": "2024-10-06T17:23:30.1477548+03:00",
-        "DateOfBirth": "2004-07-05T00:00:00"
-      }
-    ],
-    "StudyField": 4
-  },
-  {
     "Name": "Mechanical Engineering",
     "Abbreviation": "ME",
     "Students": [
