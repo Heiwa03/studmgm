@@ -1,0 +1,6 @@
+FirstName,LastName,Email,EnrollmentDate,DateOfBirth,FacultyAbbreviation
+John,Doe,john.doe@example.com,2023-09-01,2000-01-15,SE
+Jane,Smith,jane.smith@example.com,2023-09-01,1999-05-20,ME
+Alice,Johnson,alice.johnson@example.com,2023-09-01,2001-03-10,FT
+Bob,Brown,bob.brown@example.com,2023-09-01,2000-07-25,UA
+Carol,White,carol.white@example.com,2023-09-01,1998-11-30,VM

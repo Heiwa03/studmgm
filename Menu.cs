@@ -6,11 +6,13 @@ namespace UniversityManagement
         private Logger logger = new Logger("application.log");
         private SaveManager saveManager;
         private InputValidator inputValidator;
+        private BatchEnrollment batchEnrollment;
 
         public Menu()
         {
             saveManager = new SaveManager(logger); // Pass the logger to SaveManager
             inputValidator = new InputValidator(logger); // Pass the logger to InputValidator
+            batchEnrollment = new BatchEnrollment(logger); // Pass the logger to BatchEnrollment
             faculties = saveManager.LoadState();
             logger.LogInfo("Application started and state loaded.");
         }
@@ -29,7 +31,8 @@ namespace UniversityManagement
                 Console.WriteLine("7. Display all enrolled students");
                 Console.WriteLine("8. Display all graduates");
                 Console.WriteLine("9. Check if a student belongs to a faculty");
-                Console.WriteLine("10. Exit");
+                Console.WriteLine("10. Batch enroll students from CSV");
+                Console.WriteLine("11. Exit");
                 Console.Write("Enter your choice: ");
                 string? choice = Console.ReadLine();
 
@@ -63,6 +66,9 @@ namespace UniversityManagement
                         CheckIfStudentBelongsToFaculty();
                         break;
                     case "10":
+                        BatchEnrollStudents();
+                        break;
+                    case "11":
                         saveManager.SaveState(faculties);
                         logger.LogInfo("Application state saved and exited.");
                         return;
@@ -72,6 +78,20 @@ namespace UniversityManagement
                         break;
                 }
             }
+        }
+
+        private void BatchEnrollStudents()
+        {
+            string facultyFilePath = inputValidator.GetValidatedInput("Enter the path to the faculties CSV file: ", "File path cannot be empty. Please enter a valid file path.");
+            List<Faculty> newFaculties = batchEnrollment.ImportFacultiesFromCsv(facultyFilePath);
+
+            string studentFilePath = inputValidator.GetValidatedInput("Enter the path to the students CSV file: ", "File path cannot be empty. Please enter a valid file path.");
+            batchEnrollment.ImportStudentsFromCsv(studentFilePath, newFaculties);
+
+            batchEnrollment.MergeFaculties(faculties, newFaculties);
+
+            Console.WriteLine($"Successfully enrolled students from CSV files.");
+            logger.LogInfo($"Successfully enrolled students from CSV files.");
         }
 
         private void CreateFaculty()

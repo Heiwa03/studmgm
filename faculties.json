@@ -51,5 +51,80 @@
       }
     ],
     "StudyField": 4
+  },
+  {
+    "Name": "Mechanical Engineering",
+    "Abbreviation": "ME",
+    "Students": [
+      {
+        "FirstName": "Jane",
+        "LastName": "Smith",
+        "Email": "jane.smith@example.com",
+        "EnrollmentDate": "2023-09-01T00:00:00",
+        "DateOfBirth": "1999-05-20T00:00:00"
+      }
+    ],
+    "GraduatedStudents": [],
+    "StudyField": 0
+  },
+  {
+    "Name": "Software Engineering",
+    "Abbreviation": "SE",
+    "Students": [
+      {
+        "FirstName": "John",
+        "LastName": "Doe",
+        "Email": "john.doe@example.com",
+        "EnrollmentDate": "2023-09-01T00:00:00",
+        "DateOfBirth": "2000-01-15T00:00:00"
+      }
+    ],
+    "GraduatedStudents": [],
+    "StudyField": 1
+  },
+  {
+    "Name": "Food Technology",
+    "Abbreviation": "FT",
+    "Students": [
+      {
+        "FirstName": "Alice",
+        "LastName": "Johnson",
+        "Email": "alice.johnson@example.com",
+        "EnrollmentDate": "2023-09-01T00:00:00",
+        "DateOfBirth": "2001-03-10T00:00:00"
+      }
+    ],
+    "GraduatedStudents": [],
+    "StudyField": 2
+  },
+  {
+    "Name": "Urbanism and Architecture",
+    "Abbreviation": "UA",
+    "Students": [
+      {
+        "FirstName": "Bob",
+        "LastName": "Brown",
+        "Email": "bob.brown@example.com",
+        "EnrollmentDate": "2023-09-01T00:00:00",
+        "DateOfBirth": "2000-07-25T00:00:00"
+      }
+    ],
+    "GraduatedStudents": [],
+    "StudyField": 3
+  },
+  {
+    "Name": "Veterinary Medicine",
+    "Abbreviation": "VM",
+    "Students": [
+      {
+        "FirstName": "Carol",
+        "LastName": "White",
+        "Email": "carol.white@example.com",
+        "EnrollmentDate": "2023-09-01T00:00:00",
+        "DateOfBirth": "1998-11-30T00:00:00"
+      }
+    ],
+    "GraduatedStudents": [],
+    "StudyField": 4
   }
 ]
