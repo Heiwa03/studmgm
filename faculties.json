@@ -36,5 +36,20 @@
     ],
     "GraduatedStudents": [],
     "StudyField": 1
+  },
+  {
+    "Name": "testfact",
+    "Abbreviation": "ts",
+    "Students": [],
+    "GraduatedStudents": [
+      {
+        "FirstName": "john",
+        "LastName": "smith",
+        "Email": "john@gmail.com",
+        "EnrollmentDate": "2024-10-06T17:23:30.1477548+03:00",
+        "DateOfBirth": "2004-07-05T00:00:00"
+      }
+    ],
+    "StudyField": 4
   }
 ]
